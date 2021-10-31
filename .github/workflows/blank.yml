@@ -31,7 +31,6 @@ jobs:
         run: |
           wget https://github.com/gitpod-io/openvscode-server/releases/download/${{ steps.openvscodeServer.outputs.release }}/${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz
           tar -xzf ${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz
-          rm -f ${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz
           mv ${{ steps.openvscodeServer.outputs.release }}-linux-x64 openvscode-server-termux
           rm -rf openvscode-server-termux/node openvscode-server-termux/node_modules
           chmod -R 777 openvscode-server-termux
@@ -45,13 +44,11 @@ jobs:
           image: xeffyr/termux:aarch64
           options: -v ${{ github.workspace }}:/work
           run: |
-            chmod -R 777 /work/openvscode-server-termux
+            cp -R /work/openvscode-server-termux /work/server
+            cat /work/package.json
+            mkdir /work/server/node_modules
             cd /work/openvscode-server-termux
-            apt update
-            apt upgrade -y
-            apt install nodejs-lts git python clang -y
-            npm i --production --legacy-peer-deps
-            cp /data/data/com.termux/files/usr/bin/node ./
+            
 
       - name: Clean useless files
         run: |
