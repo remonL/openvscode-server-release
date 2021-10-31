@@ -42,10 +42,10 @@ jobs:
       - uses: addnab/docker-run-action@v3
         with:
           image: xeffyr/termux:aarch64
-          options: -v ${{ github.workspace }}:/work
+          options: -v ${{ github.workspace }}:/work --privileged=true
           run: |
             cp -R /work/openvscode-server-termux /work/server
-            cat /work/package.json
+            cat /work/openvscode-server-termux/package.json
             mkdir /work/server/node_modules
             cd /work/openvscode-server-termux
             
