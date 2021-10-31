@@ -47,9 +47,11 @@ jobs:
             cd /work/openvscode-server-termux
             apt update
             apt upgrade -y
+            pkg install unstable-repo
+            pkg install build-essential
             apt install nodejs-lts git python clang -y
             npm install -g npm@6
-            npm -vt
+            npm -v
             npm i --production --legacy-peer-deps
             cp /data/data/com.termux/files/usr/bin/node ./
             
