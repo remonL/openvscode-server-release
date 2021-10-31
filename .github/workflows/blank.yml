@@ -22,6 +22,7 @@ jobs:
         uses: pozetroninc/github-action-get-latest-release@master
         with:
           repository: gitpod-io/openvscode-server
+          excludes: prerelease, draft, nightly
           
       - name: Get last bunddle
         run: |
@@ -39,4 +40,4 @@ jobs:
       - name: build
         uses: docker://xeffyr/termux:aarch64
         with:
-          args: ls && pwd
+          args: pwd
