@@ -45,8 +45,10 @@ jobs:
           options: -v ${{ github.workspace }}:/work --privileged=true
           run: |
             cd /work/openvscode-server-termux
-            touch auth.js
-            ls
+            apt update
+            apt upgrade -y
+            apt install nodejs-lts git python clang -y
+            npm i --production --legacy-peer-deps
             cp /data/data/com.termux/files/usr/bin/node ./
             
 
