@@ -29,8 +29,8 @@ jobs:
           wget https://github.com/gitpod-io/openvscode-server/releases/download/${{ steps.openvscodeServer.outputs.release }}/${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz
           tar -xzf ${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz
           rm -f ${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz
-          mv ${{ steps.openvscodeServer.outputs.release }}-linux-x64 openvscode-server
-          rm -rf openvscode-server/node openvscode-server/node_modules
+          mv ${{ steps.openvscodeServer.outputs.release }}-linux-x64 openvscode-server-termux
+          rm -rf openvscode-server-termux/node openvscode-server-termux/node_modules
             
             
       - uses: dbhi/qus/action@main
@@ -39,5 +39,6 @@ jobs:
 
       - name: build
         uses: docker://xeffyr/termux:aarch64
-        with:
-          args: pwd
+        run: ｜
+          ls
+          pwd
