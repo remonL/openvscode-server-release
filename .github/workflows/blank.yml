@@ -39,6 +39,8 @@ jobs:
 
       - name: build
         uses: docker://xeffyr/termux:aarch64
+      
+      - name: Setup termux
         run: ｜
           ls
           pwd
