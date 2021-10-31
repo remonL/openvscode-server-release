@@ -24,11 +24,12 @@ jobs:
           repository: gitpod-io/openvscode-server
           
       - name: Get last bunddle
-        run: wget https://github.com/gitpod-io/openvscode-server/releases/download/${{ steps.openvscodeServer.outputs.release }}/${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz && \
-            tar -xzf ${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz && \
-            rm -f ${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz && \
-            mv ${{ steps.openvscodeServer.outputs.release }}-linux-x64 openvscode-server \
-            rm -rf openvscode-server/node openvscode-server/node_modules
+        run: |
+          wget https://github.com/gitpod-io/openvscode-server/releases/download/${{ steps.openvscodeServer.outputs.release }}/${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz
+          tar -xzf ${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz
+          rm -f ${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz
+          mv ${{ steps.openvscodeServer.outputs.release }}-linux-x64 openvscode-server
+          rm -rf openvscode-server/node openvscode-server/node_modules
             
             
       - uses: dbhi/qus/action@main
