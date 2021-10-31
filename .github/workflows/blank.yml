@@ -42,5 +42,6 @@ jobs:
       
       - name: Setup termux
         run: ｜
+          uname -a
           ls
           pwd
