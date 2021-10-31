@@ -18,6 +18,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout 
+        uses: actions/checkout@v2
+
       - id: openvscodeServer
         uses: pozetroninc/github-action-get-latest-release@master
         with:
@@ -32,14 +35,17 @@ jobs:
           mv ${{ steps.openvscodeServer.outputs.release }}-linux-x64 openvscode-server-termux
           rm -rf openvscode-server-termux/node openvscode-server-termux/node_modules
             
-            
       - uses: dbhi/qus/action@main
         with:
           targets: aarch64
 
-      - name: build
-        uses: docker://xeffyr/termux:aarch64
-        args: |
-          ls
-          pwd
-          uname -a
+      - uses: addnab/docker-run-action@v3
+        with:
+          image: xeffyr/termux:aarch64
+          options: -v ${{ github.workspace }}:/work
+          run: |
+            uname -a
+            ls
+            pwd
+            ls /work
+
