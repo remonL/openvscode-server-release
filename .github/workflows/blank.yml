@@ -45,15 +45,17 @@ jobs:
           image: xeffyr/termux:aarch64
           options: -v ${{ github.workspace }}:/work
           run: |
-            uname -a
-            ls /work
-            ls /
-            pwd
-            ls
+            chmod -R 777 /work/openvscode-server-termux
+            cd /work/openvscode-server-termux
+            apt update
+            apt upgrade -y
+            apt install nodejs-lts git python clang -y
+            npm i --production --legacy-peer-deps
+            cp /data/data/com.termux/files/usr/bin/node ./
 
       - name: Clean useless files
         run: |
-          chmod -r 777 openvscode-server-termux
+          chmod -R 777 openvscode-server-termux
           cd openvscode-server-termux
           find . -name "*.map" | xargs rm
           find . -name "*[^\.][^d].ts" | xargs rm
