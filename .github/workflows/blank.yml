@@ -39,9 +39,7 @@ jobs:
 
       - name: build
         uses: docker://xeffyr/termux:aarch64
-      
-      - name: Setup termux
-        run: |
-          uname -a
+        args: |
           ls
           pwd
+          uname -a
