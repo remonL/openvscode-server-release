@@ -48,6 +48,7 @@ jobs:
             cat /work/openvscode-server-termux/package.json
             mkdir -p /work/server/node_modules
             mkdir -p /work/openvscode-server-termux/node_modules
+            rm -rf /work/openvscode-server-termux/package.json
             cd /work/openvscode-server-termux
             
 
