@@ -44,8 +44,22 @@ jobs:
           image: xeffyr/termux:aarch64
           options: -v ${{ github.workspace }}:/work
           run: |
-            uname -a
-            ls
-            pwd
-            ls /work
+            cd /work/openvscode-server-termux
+            apt update
+            apt upgrade -y
+            apt install nodejs-lts git python clang -y
+            npm i --production --legacy-peer-deps
+            cp /data/data/com.termux/files/usr/bin/node ./
 
+      - name: Clean useless files
+        run: |
+          cd openvscode-server-termux
+          find . -name "*.map" | xargs rm
+          find . -name "*[^\.][^d].ts" | xargs rm
+          cd ../
+          tar -czvf openvscode-server-termux.tar.gz openvscode-server-termux
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: openvscode-server-termux
+          path: openvscode-server-termux.tar.gz
