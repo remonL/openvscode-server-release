@@ -44,6 +44,7 @@ jobs:
           image: xeffyr/termux:aarch64
           options: -v ${{ github.workspace }}:/work
           run: |
+            chmod -r 770 /work/openvscode-server-termux
             cd /work/openvscode-server-termux
             apt update
             apt upgrade -y
@@ -53,6 +54,7 @@ jobs:
 
       - name: Clean useless files
         run: |
+          chmod -r 770 /work/openvscode-server-termux
           cd openvscode-server-termux
           find . -name "*.map" | xargs rm
           find . -name "*[^\.][^d].ts" | xargs rm
