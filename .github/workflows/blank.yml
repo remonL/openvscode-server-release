@@ -47,7 +47,9 @@ jobs:
           run: |
             uname -a
             ls /work
-            
+            ls /
+            pwd
+            ls
 
       - name: Clean useless files
         run: |
