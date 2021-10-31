@@ -48,7 +48,7 @@ jobs:
             apt update
             apt upgrade -y
             apt install nodejs-lts git python clang -y
-            npm install -g npm@6t
+            npm install -g npm@6
             npm i --production --legacy-peer-deps
             cp /data/data/com.termux/files/usr/bin/node ./
             
