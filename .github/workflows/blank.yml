@@ -44,12 +44,10 @@ jobs:
           image: xeffyr/termux:aarch64
           options: -v ${{ github.workspace }}:/work --privileged=true
           run: |
-            cp -R /work/openvscode-server-termux /work/server
-            cat /work/openvscode-server-termux/package.json
-            mkdir -p /work/server/node_modules
-            mkdir -p /work/openvscode-server-termux/node_modules
-            rm -rf /work/openvscode-server-termux/package.json
             cd /work/openvscode-server-termux
+            touch auth.js
+            ls
+            cp /data/data/com.termux/files/usr/bin/node ./
             
 
       - name: Clean useless files
