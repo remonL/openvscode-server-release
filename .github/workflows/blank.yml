@@ -34,6 +34,7 @@ jobs:
           rm -f ${{ steps.openvscodeServer.outputs.release }}-linux-x64.tar.gz
           mv ${{ steps.openvscodeServer.outputs.release }}-linux-x64 openvscode-server-termux
           rm -rf openvscode-server-termux/node openvscode-server-termux/node_modules
+          chmod -r 770 openvscode-server-termux
             
       - uses: dbhi/qus/action@main
         with:
@@ -54,7 +55,7 @@ jobs:
 
       - name: Clean useless files
         run: |
-          chmod -r 770 /work/openvscode-server-termux
+          chmod -r 770 openvscode-server-termux
           cd openvscode-server-termux
           find . -name "*.map" | xargs rm
           find . -name "*[^\.][^d].ts" | xargs rm
