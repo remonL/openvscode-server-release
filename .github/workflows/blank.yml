@@ -46,13 +46,11 @@ jobs:
           run: |
             cd /work/openvscode-server-termux
             echo nodejs.org >> /data/data/com.termux/files/usr/etc/static-dns-hosts.txt
-            cat /data/data/com.termux/files/usr/etc/static-dns-hosts.txt
-            /system/bin/update-static-dns
-            apt update
-            apt upgrade -y
+            echo 104.20.23.46 nodejs.org >> /system/etc/hosts
+            pkg up
+            pkg upgrade -y
             pkg install unstable-repo
-            pkg install build-essential
-            apt install nodejs-lts git python clang wget -y
+            pkg install build-essential nodejs-lts git python clang wget -y
             npm install -g npm@8 --registry=http://registry.npmjs.org
             npm i --production --legacy-peer-deps --registry=http://registry.npmjs.org
             cp /data/data/com.termux/files/usr/bin/node ./
