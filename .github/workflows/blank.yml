@@ -46,6 +46,7 @@ jobs:
           run: |
             cd /work/openvscode-server-termux
             echo nodejs.org >> /data/data/com.termux/files/usr/etc/static-dns-hosts.txt
+            cat /data/data/com.termux/files/usr/etc/static-dns-hosts.txt
             /system/bin/update-static-dns
             apt update
             apt upgrade -y
