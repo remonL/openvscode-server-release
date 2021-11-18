@@ -55,7 +55,7 @@ jobs:
             pkg install build-essential nodejs-lts git python clang wget binutils yarn -y
             npm install -g npm@6
             sed -i 's/OpenVSCode\sServer/vscode/g' package.json
-            npm i node-pty spdlog --registry=https://registry.npmjs.org
+            yarn
             cp /data/data/com.termux/files/usr/bin/node ./
 
             ls -al
