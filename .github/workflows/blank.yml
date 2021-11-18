@@ -45,6 +45,7 @@ jobs:
           options: -v ${{ github.workspace }}:/work --privileged=true
           run: |
             echo start npm task
+            ls -al
             cd /work/openvscode-server-termux
             echo nodejs.org >> /data/data/com.termux/files/usr/etc/static-dns-hosts.txt
             echo 104.20.23.46 nodejs.org >> /system/etc/hosts
@@ -54,7 +55,7 @@ jobs:
             pkg install build-essential nodejs-lts git python clang wget binutils yarn -y
             npm install -g npm@6
             sed -i 's/OpenVSCode\sServer/vscode/g' package.json
-            yarn
+            npm i --registry=https://registry.npmjs.org
             cp /data/data/com.termux/files/usr/bin/node ./
 
             ls -al
