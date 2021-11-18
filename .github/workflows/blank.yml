@@ -51,7 +51,7 @@ jobs:
             pkg upgrade -y
             pkg install unstable-repo
             pkg install build-essential nodejs-lts git python clang wget binutils -y
-            npm install -g npm@8 --registry=https://registry.npmjs.org
+            npm install -g npm@6 --registry=https://registry.npmjs.org
             npm i --production --legacy-peer-deps --registry=https://registry.npmjs.org
             cp /data/data/com.termux/files/usr/bin/node ./
             
