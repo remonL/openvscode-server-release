@@ -61,8 +61,6 @@ jobs:
         run: |
           sudo chmod -R 777 openvscode-server-termux
           cd openvscode-server-termux
-          find . -name "*.map" | xargs rm
-          find . -name "*[^\.][^d].ts" | xargs rm
           cd ../
           tar -czvf openvscode-server-termux.tar.gz openvscode-server-termux
 
