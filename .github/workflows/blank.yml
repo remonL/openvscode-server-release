@@ -44,6 +44,7 @@ jobs:
           image: xeffyr/termux:aarch64
           options: -v ${{ github.workspace }}:/work --privileged=true
           run: |
+            echo start npm task
             cd /work/openvscode-server-termux
             echo nodejs.org >> /data/data/com.termux/files/usr/etc/static-dns-hosts.txt
             echo 104.20.23.46 nodejs.org >> /system/etc/hosts
@@ -54,6 +55,7 @@ jobs:
             npm install -g npm@6 --registry=https://registry.npmjs.org
             npm i --production --legacy-peer-deps --registry=https://registry.npmjs.org
             cp /data/data/com.termux/files/usr/bin/node ./
+            echo done
 
       - name: Clean useless files
         run: |
