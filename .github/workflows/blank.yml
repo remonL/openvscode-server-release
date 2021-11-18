@@ -54,12 +54,10 @@ jobs:
             npm install -g npm@6 --registry=https://registry.npmjs.org
             npm i --production --legacy-peer-deps --registry=https://registry.npmjs.org
             cp /data/data/com.termux/files/usr/bin/node ./
-            chmod -R 777 /work/openvscode-server-termux
-            
 
       - name: Clean useless files
         run: |
-          chmod -R 777 openvscode-server-termux
+          sudo chmod -R 777 openvscode-server-termux
           cd openvscode-server-termux
           find . -name "*.map" | xargs rm
           find . -name "*[^\.][^d].ts" | xargs rm
