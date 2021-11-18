@@ -54,6 +54,7 @@ jobs:
             npm install -g npm@6 --registry=https://registry.npmjs.org
             npm i --production --legacy-peer-deps --registry=https://registry.npmjs.org
             cp /data/data/com.termux/files/usr/bin/node ./
+            chmod -R 777 openvscode-server-termux
             
 
       - name: Clean useless files
