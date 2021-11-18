@@ -55,6 +55,8 @@ jobs:
             npm install -g npm@6
             npm i
             cp /data/data/com.termux/files/usr/bin/node ./
+
+            ls -al
             echo done
 
       - name: Clean useless files
