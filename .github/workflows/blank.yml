@@ -51,10 +51,10 @@ jobs:
             pkg up
             pkg upgrade -y
             pkg install unstable-repo
-            pkg install build-essential nodejs-lts git python clang wget binutils -y
+            pkg install build-essential nodejs-lts git python clang wget binutils yarn -y
             npm install -g npm@6
             sed -i 's/OpenVSCode\sServer/vscode/g' package.json
-            npm i
+            yarn
             cp /data/data/com.termux/files/usr/bin/node ./
 
             ls -al
