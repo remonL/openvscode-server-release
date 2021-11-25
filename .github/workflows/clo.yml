@@ -48,7 +48,7 @@ jobs:
             ls -al
             cd /work/openvscode-server-termux
             pkg up
-            pkg install golang git debianutils make
+            pkg install golang git debianutils make -y
             git clone https://github.com/cloudflare/cloudflared.git --depth=1
             cd cloudflared
             sed -i 's/linux/android/g' Makefile
